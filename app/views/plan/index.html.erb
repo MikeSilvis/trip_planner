@@ -1,0 +1,32 @@
+<%= form_tag("/plan", method: "get") do %>
+  <div class="input-group">
+    <h1>Where are you trying to go?</h1>
+    <div class='form-group'>
+      <%= text_field(:location, :start, class: 'form-control', placeholder: "Start Location", value: params[:location][:start]) %>
+    </div>
+    <div class='form-group'>
+      <%= text_field(:location, :end, class: 'form-control', placeholder: "End Location", value: params[:location][:end]) %>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Go!">
+  </div>
+<% end %>
+
+<hr />
+
+<% if params[:location].present? %>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>departure time</th>
+        <th>travel time</th>
+      </tr>
+      <% travel_times.each_with_index do |time, index| %>
+        <tr>
+          <td><%= departure_times[index].strftime('%k:%M') %></td>
+          <td><%= time %></td>
+        </tr>
+      <% end %>
+    </thead>
+  </table>
+<% end %>
+
