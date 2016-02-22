@@ -8,9 +8,15 @@ class PlanController < ApplicationController
   end
 
   def travel_times
-    @travel_times ||= departure_times.map do |time|
-      find_distance(time)
-    end
+    @travel_times ||= begin
+                        threads = []
+                        times = []
+                        departure_times.map do |time|
+                          threads << Thread.new{ times << find_distance(time)}
+                        end
+                        threads.each(&:join)
+                        times
+                      end
   end
   helper_method :travel_times
 
