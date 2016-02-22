@@ -2,6 +2,7 @@ require 'google-maps'
 
 class PlanController < ApplicationController
   API_KEY = 'AIzaSyCLhamSZNhPdNcjDJifzHVReu3wRSBtQ5g'
+  TIME_ZONE = 'Pacific Time (US & Canada)'
 
   def index
   end
@@ -36,6 +37,6 @@ class PlanController < ApplicationController
       end
     end
 
-    DateTime.now
+    DateTime.now.in_time_zone(TIME_ZONE)
   end
 end
