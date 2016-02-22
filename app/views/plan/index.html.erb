@@ -7,6 +7,9 @@
     <div class='form-group'>
       <%= text_field(:location, :end, class: 'form-control', placeholder: "End Location", value: params[:location][:end]) %>
     </div>
+    <div class='form-group'>
+      <%= text_field(:location, :departure, class: 'form-control', placeholder: "Departure Time", value: params[:location][:departure]) %>
+    </div>
     <input class="btn btn-primary" type="submit" value="Go!">
   </div>
 <% end %>
