@@ -14,7 +14,7 @@ class PlanController < ApplicationController
   helper_method :travel_times
 
   def departure_times
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map do |future_times|
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map do |future_times|
       (DateTime.now + future_times.hours)
     end
   end

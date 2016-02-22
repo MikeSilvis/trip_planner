@@ -22,7 +22,7 @@
       </tr>
       <% travel_times.each_with_index do |time, index| %>
         <tr>
-          <td><%= departure_times[index].strftime('%k:%M') %></td>
+          <td><%= departure_times[index].strftime('%l:%M %p') %></td>
           <td><%= time %></td>
         </tr>
       <% end %>
