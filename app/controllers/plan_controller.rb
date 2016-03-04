@@ -10,12 +10,12 @@ class PlanController < ApplicationController
   def travel_times
     @travel_times ||= begin
                         threads = []
-                        times = []
+                        times = {}
                         departure_times.map do |time|
-                          threads << Thread.new{ times << find_distance(time)}
+                          threads << Thread.new{ times[time] = find_distance(time)}
                         end
                         threads.each(&:join)
-                        times
+                        times.keys.sort.map { |k| times[k] }
                       end
   end
   helper_method :travel_times
